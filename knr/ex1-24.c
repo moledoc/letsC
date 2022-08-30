@@ -13,7 +13,7 @@
 * braces
 * ~line comments~
 * ~block comment~
-* escape sequence
+* ~escape sequence~
 */
 
 void quotes(int b[], const char c, const char p);
@@ -34,6 +34,18 @@ int main(int argc, char **argv[])
 	int brace[3];
 	int quote[3];
 	int double_quote[3];
+	char escapeables[11];
+	escapeables[0] = 'a';
+	escapeables[1] = 'b';
+	escapeables[2] = 't';
+	escapeables[3] = 'n';
+	escapeables[4] = 'v';
+	escapeables[5] = 'f';
+	escapeables[6] = 'r';
+	escapeables[7] = '\\';
+	escapeables[8] = '"';
+	escapeables[9] = '\'';
+	escapeables[10] = '?';
 
 	int row, col;
 	row = col = 1;
@@ -55,6 +67,18 @@ int main(int argc, char **argv[])
 		}
 		if (prev == '/' && c == '*' ){
 			in_comment = 1;
+		}
+		////
+		if (prev == '\\'){
+			int is_escapeable = 0;
+			for (int i = 0; i< sizeof escapeables; ++i){
+				if (escapeables[i] == c){
+					is_escapeable = 1;
+				}
+			}
+			if (!is_escapeable){
+				printf("Incorrect escape sequence at r:%d c:%d\n",row,col);
+			}
 		}
 		////
 		if (!in_comment && c == '\'' && quote[0] && prev != '\\') {
