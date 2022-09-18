@@ -1,0 +1,4 @@
+{"test": "json",
+	"array": ["laal llal", "many", "more", "elements", "\"test\""],
+	"nested": {"thing": "la", "nested_array": [{"t":1}]}
+}
