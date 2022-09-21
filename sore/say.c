@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// README - say is basic implementation of `echo`
+// README say is basic implementation of `echo`.
 
 char *escape(char *cs);
 
