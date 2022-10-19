@@ -2,6 +2,8 @@
 // Exercise 2-4. Write an alternative version of squeeze(s1,s2) that deletes each character in
 // s1 that matches any character in the string s2.
 
+#define NUMBER_OF_CHARS 177
+
 long unsigned int strlen(char* s1);
 void squeeze(char s1[], char s2[]);
 
@@ -17,7 +19,7 @@ long unsigned int strlen(char* s1)
 void squeeze(char* s1, char* s2)
 {
 	// map s2 chars
-	int chars[177];
+	int chars[NUMBER_OF_CHARS];
 	char c;
 	while ((c = *s2++) != '\0'){
 		chars[c] = 1;
