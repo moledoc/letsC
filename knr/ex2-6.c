@@ -7,15 +7,15 @@ unsigned setbits(unsigned x, int p, int n, unsigned y);
 
 unsigned setbits(unsigned x, int p, int n, unsigned y)
 {
-	return x | ((y & ~(~0 << n)) << (p+1-n));
+	return x | (y & (~(~0 << n) << (p+1-n)));
 }
 
 int main(void)
 {
 	unsigned x = 0b1000;
 	unsigned y = 0b0101;
-	int p = 2;
-	int n = 3;
+	int p = 3;
+	int n = 4;
 	printf("%d\n", setbits(x,p,n,y));
 	return 0;
 }
